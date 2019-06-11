@@ -10,17 +10,17 @@ namespace normal {
 
 class DenseGraph { 
 private:
-	std::vector<std::vector<bool>> adjMatrix_;
-	int vCnt_ = 0;
-    int eCnt_ = 0; 
-	bool directed_ = false;
+	std::vector<std::vector<bool>> adjMatrix_;  // adjacency matrix
+	int vCnt_ = 0;                              // number of vertexs
+    int eCnt_ = 0;                              // number of edges
+	bool directed_ = false;                     // if directed graph
 
 public:
-	DenseGraph(int V, bool directed = false) :
-		adjMatrix_(V), vCnt_(V), eCnt_(0), directed_(directed)
+	DenseGraph(int vCnt, bool directed = false) :
+		adjMatrix_(vCnt), vCnt_(vCnt), eCnt_(0), directed_(directed)
 	{ 
-		for (int i = 0; i < V; i++) 
-			adjMatrix_[i].assign(V, false);
+		for (int i = 0; i < vCnt_; i++) 
+			adjMatrix_[i].assign(vCnt_, false);
 	}
 
 	int vertexCount() const { return vCnt_; }

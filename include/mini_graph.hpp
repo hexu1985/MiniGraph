@@ -3,5 +3,5 @@
 #include "normal/dense_graph.hpp"
 #include "normal/edge.hpp"
 #include "normal/graph_priner.hpp"
-#include "thirdparty/nlohmann/json.hpp"
+#include "normal/sparse_multi_graph.hpp"
 #endif
