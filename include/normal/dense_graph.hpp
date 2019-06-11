@@ -45,34 +45,70 @@ public:
 
 	bool hasEdge(int u, int v) const { return adjMatrix_[u][v]; }
 
-    struct AdjIterator {
-        const DenseGraph *graph = 0;
-        int u = -1;
+    struct AdjIterator: public std::iterator<std::forward_iterator_tag, int> {
+        const std::vector<bool> *pArray = 0;
         int v = -1;
 
-        AdjIterator(const DenseGraph &graph, int u):
-            graph(&graph), u(u), v(-1)
+        AdjIterator(const std::vector<bool> &array):
+            pArray(&array)
         {
             next();
         }
 
-        bool hasNext() const
+        AdjIterator(const std::vector<bool> &array, int v):
+            pArray(&array), v(v)
         {
-            return v < graph->vertexCount();
         }
 
-        int next()
+        void next()
         {
-            int save = v;
-            for ( v++ ; v < graph->vertexCount(); v++)
-                if (graph->hasEdge(u, v))
+            auto &array = *pArray;
+            for (v++ ; v < array.size(); v++)
+                if (array[v])
                     break;
-            return save;
+        }
+
+        int operator *() const
+        {
+            return v;
+        }
+
+        AdjIterator &operator ++()
+        {
+            next();
+            return *this;
+        }
+
+        AdjIterator operator ++(int)
+        {
+            AdjIterator tmp(*this);
+            next();
+            return tmp;
+        }
+
+        bool operator ==(const AdjIterator &rhs) const
+        {
+            return (this->pArray == rhs.pArray && this->v == rhs.v);
+        }
+
+        bool operator !=(const AdjIterator &rhs) const
+        {
+            return !(*this == rhs);
         }
     };
 
-    AdjIterator getAdjIterator(int u) const { return AdjIterator(*this, u); }
+    AdjIterator getAdjIterator(int v) const { return AdjIterator(adjMatrix_[v], -1); }
 };
+
+DenseGraph::AdjIterator begin(const DenseGraph::AdjIterator &adj)
+{
+    return DenseGraph::AdjIterator(*adj.pArray);
+}
+
+DenseGraph::AdjIterator end(const DenseGraph::AdjIterator &adj)
+{
+    return DenseGraph::AdjIterator(*adj.pArray, adj.pArray->size());
+}
 
 }   // namespace normal
 

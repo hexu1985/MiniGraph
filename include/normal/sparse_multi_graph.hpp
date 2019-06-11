@@ -55,31 +55,7 @@ public:
         return false;
 	}
 
-    friend struct AdjIterator;
-
-    struct AdjIterator {
-        const std::forward_list<int> *adjList = 0;
-        int u = -1;
-        std::forward_list<int>::const_iterator iter;
-
-        AdjIterator(const SparseMultiGraph &graph, int u): 
-            adjList(&graph.adjLists_[u]), u(u)
-        {
-            iter = adjList->begin();
-        }
-
-        bool hasNext() const
-        {
-            return iter != adjList->end();
-        }
-
-        int next()
-        {
-            return *iter++;
-        }
-    };
-
-    AdjIterator getAdjIterator(int u) const { return AdjIterator(*this, u); }
+    const std::forward_list<int> &getAdjIterator(int v) const { return adjLists_[v]; }
 };
 
 }   // namespace normal

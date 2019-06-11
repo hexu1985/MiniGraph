@@ -26,12 +26,11 @@ public:
 template <class Graph> 
 void GraphPrinter::showAdjLists(std::ostream &out, const Graph &graph)
 { 
-	for (int s = 0; s < graph.vertexCount(); s++) {
-		out << std::setw(2) << s << ":";
-        auto adjIter = graph.getAdjIterator(s);
-		while (adjIter.hasNext()) { 
-			out << std::setw(2) << adjIter.next() << " "; 
-		}
+	for (int v = 0; v < graph.vertexCount(); v++) {
+		out << std::setw(2) << v << ":";
+        for (auto u: graph.getAdjIterator(v)) {
+            out << std::setw(2) << u << " ";
+        }
 		out << std::endl;
 	}
 }
