@@ -1,5 +1,5 @@
-#ifndef MINI_GRAPH_DENSE_GRAPH_INC
-#define MINI_GRAPH_DENSE_GRAPH_INC
+#ifndef MINI_GRAPH_NORMAL_DENSE_GRAPH_INC
+#define MINI_GRAPH_NORMAL_DENSE_GRAPH_INC
 
 #include <vector>
 #include "edge.hpp"
@@ -63,7 +63,7 @@ public:
         void next()
         {
             auto &array = *pArray;
-            for (v++ ; v < array.size(); v++)
+            for (v++ ; v < (int) array.size(); v++)
                 if (array[v])
                     break;
         }
