@@ -50,7 +50,7 @@ public:
 
     int getCCNumber(int v) const { return ccNum_[v]; }
 
-    bool isConnect(int s, int t) const 
+    bool isConnected(int s, int t) const 
     { return ccNum_[s] == ccNum_[t]; }
 };
 
