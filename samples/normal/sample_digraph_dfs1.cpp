@@ -22,6 +22,7 @@ int main()
     DigraphDFS<SparseMultiGraph> dfs(graph);
     dfs.search();
 
+    // 边类型结果应该和digraph1-trace.jpg一致
     for (auto edge: edges) {
         cout << edge.u << "-" << edge.v << ": " << dfs.getEdgeType(edge.u, edge.v) << '\n';
     }

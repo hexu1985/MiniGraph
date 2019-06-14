@@ -4,14 +4,14 @@
 #include <limits>
 #include <vector>
 #include <string>
-#include "dfs.hpp"
+#include "trace_dfs.hpp"
 
 namespace MiniGraph {
 
 namespace normal {
 
 template <class Graph> 
-class DigraphDFS: public DFS<Graph> {
+class DigraphDFS: public TraceDFS<Graph> {
 protected:
     int clock_ = 0;
     std::vector<int> pre_;  // previsit clock
@@ -30,7 +30,7 @@ protected:
     }
 
 public:
-    DigraphDFS(const Graph &graph): DFS<Graph>(graph), 
+    DigraphDFS(const Graph &graph): TraceDFS<Graph>(graph), 
         pre_(graph.vertexCount(), std::numeric_limits<int>::max()),
         post_(graph.vertexCount(), std::numeric_limits<int>::max())
     {}
@@ -41,7 +41,11 @@ public:
         // [   [     ]    ]
         // u   v     v    u
         if (pre_[u] < pre_[v] && post_[v] < post_[u]) {
-            return "tree|down(树边|前向边)";
+            if (this->parent_[v] == u) {
+                return "tree(树边)";
+            } else {
+                return "down(前向边)";
+            }
         }
 
         // 回边

@@ -7,4 +7,5 @@
 #include "normal/edge.hpp"
 #include "normal/graph_priner.hpp"
 #include "normal/sparse_multi_graph.hpp"
+#include "normal/trace_dfs.hpp"
 #endif
