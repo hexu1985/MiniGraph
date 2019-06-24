@@ -1,3 +1,6 @@
+/** \example sample_edges1.cpp
+ * This is an example of how to use the edges function.
+ */
 #include <vector>
 #include "mini_graph.hpp"
 

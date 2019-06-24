@@ -1,3 +1,6 @@
+/** \example sample_dfs1.cpp
+ * This is an example of how to use the DFS class.
+ */
 #include <iostream>
 #include <vector>
 #include "mini_graph.hpp"

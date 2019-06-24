@@ -1,3 +1,6 @@
+/** \example sample_connected_components1.cpp
+ * This is an example of how to use the ConnectedComponents class.
+ */
 #include <iostream>
 #include <iomanip>
 #include <vector>

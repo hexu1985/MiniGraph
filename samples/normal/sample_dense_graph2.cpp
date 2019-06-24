@@ -1,3 +1,6 @@
+/** \example sample_dense_graph2.cpp
+ * This is an example of how to use the DenseGraph class.
+ */
 #include <vector>
 #include "mini_graph.hpp"
 
