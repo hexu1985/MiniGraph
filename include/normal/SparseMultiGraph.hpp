@@ -4,7 +4,7 @@
 #include <vector>
 #include <forward_list>
 #include <algorithm>
-#include "edge.hpp"
+#include "Edge.hpp"
 
 namespace MiniGraph {
 

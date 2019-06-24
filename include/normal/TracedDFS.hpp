@@ -8,7 +8,7 @@ namespace MiniGraph {
 namespace normal {
 
 template <class Graph> 
-class TraceDFS {
+class TracedDFS {
 protected:
     const Graph &graph_;
     std::vector<bool> visited_;
@@ -38,7 +38,7 @@ protected:
     }
 
 public:
-    TraceDFS(const Graph &graph): graph_(graph), 
+    TracedDFS(const Graph &graph): graph_(graph), 
         visited_(graph.vertexCount(), false),
         parent_(graph.vertexCount(), -1) 
     {}

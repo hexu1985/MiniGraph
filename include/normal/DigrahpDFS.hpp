@@ -4,14 +4,14 @@
 #include <limits>
 #include <vector>
 #include <string>
-#include "trace_dfs.hpp"
+#include "TracedDFS.hpp"
 
 namespace MiniGraph {
 
 namespace normal {
 
 template <class Graph> 
-class DigraphDFS: public TraceDFS<Graph> {
+class DigraphDFS: public TracedDFS<Graph> {
 protected:
     int clock_ = 0;
     std::vector<int> pre_;  // previsit clock
@@ -30,7 +30,7 @@ protected:
     }
 
 public:
-    DigraphDFS(const Graph &graph): TraceDFS<Graph>(graph), 
+    DigraphDFS(const Graph &graph): TracedDFS<Graph>(graph), 
         pre_(graph.vertexCount(), std::numeric_limits<int>::max()),
         post_(graph.vertexCount(), std::numeric_limits<int>::max())
     {}

@@ -2,7 +2,7 @@
 #define MINI_GRAPH_NORMAL_DENSE_GRAPH_INC
 
 #include <vector>
-#include "edge.hpp"
+#include "Edge.hpp"
 
 namespace MiniGraph {
 
