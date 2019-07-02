@@ -16,8 +16,6 @@ private:
 	bool directed_ = false;                         // if directed graph
 
 public:
-    using EdgeType = Edge;
-
 	DenseGraph(int vCnt, bool directed = false) :
 		adjMatrix_(vCnt), vCnt_(vCnt), eCnt_(0), directed_(directed)
 	{ 

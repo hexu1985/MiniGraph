@@ -18,8 +18,6 @@ private:
 	bool directed_ = false;                         // if directed graph
 
 public:
-    using EdgeType = Edge;
-
 	SparseMultiGraph(int vCnt, bool directed = false) :
 		adjLists_(vCnt), vCnt_(vCnt), eCnt_(0), directed_(directed) 
 	{ 

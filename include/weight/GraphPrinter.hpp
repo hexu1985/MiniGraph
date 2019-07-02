@@ -10,14 +10,14 @@ namespace weight {
 
 class GraphPrinter {
 public:
-    template <class Graph, class Edge = typename Graph::EdgeType>
+    template <class Graph>
 	static void showAdjLists(std::ostream &, const Graph &);
 
-    template <class Graph, class Edge = typename Graph::EdgeType>
+    template <class Graph>
 	static void showAdjLists(const Graph &);
 };
 
-template <class Graph, class Edge = typename Graph::EdgeType>
+template <class Graph>
 void GraphPrinter::showAdjLists(std::ostream &out, const Graph &graph)
 { 
 	for (int v = 0; v < graph.vertexCount(); v++) {
@@ -29,10 +29,10 @@ void GraphPrinter::showAdjLists(std::ostream &out, const Graph &graph)
 	}
 }
 
-template <class Graph, class Edge = typename Graph::EdgeType>
+template <class Graph>
 void GraphPrinter::showAdjLists(const Graph &graph)
 { 
-	showAdjLists<Graph, Edge>(std::cout, graph);
+	showAdjLists(std::cout, graph);
 }
 
 }	// namespace weight

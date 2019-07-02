@@ -2,12 +2,13 @@
 #define MINI_GRAPH_WEIGHT_EDGES_INC
 
 #include <vector>
+#include "Edge.hpp"
 
 namespace MiniGraph {
 
 namespace weight {
 
-template <class Graph, class Edge = typename Graph::EdgeType> 
+template <class Graph> 
 std::vector<Edge *> edges(const Graph &graph)
 { 
     int E = 0;
