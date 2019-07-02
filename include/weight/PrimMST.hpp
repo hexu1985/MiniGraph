@@ -46,9 +46,13 @@ public:
         }
     }
 
-    const std::vector<Edge *> &getTreeEdges()
+    std::vector<Edge *> getTreeEdges()
     {
-        return tree_;
+        std::vector<Edge *> edges;
+        for (auto edge: tree_)
+            if (edge)
+                edges.push_back(edge);
+        return std::move(edges);
     }
 };
 
