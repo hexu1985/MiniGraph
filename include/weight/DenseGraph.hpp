@@ -39,8 +39,8 @@ public:
 	{ 
 		int u = e->u(), v = e->v();
 		if (adjMatrix_[u][v]) eCnt_--;
-		adjMatrix_[u][v] = e;
-		if (!directed_) adjMatrix_[v][u] = e; 
+		adjMatrix_[u][v] = nullptr;
+		if (!directed_) adjMatrix_[v][u] = nullptr; 
 	} 
 
     Edge *edge(int u, int v) const { return adjMatrix_[u][v]; }
