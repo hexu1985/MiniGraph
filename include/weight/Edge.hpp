@@ -9,6 +9,7 @@
 #define MINI_GRAPH_WEIGHT_EDGE_INC
 
 #include <cassert>
+#include <limits>
 
 namespace MiniGraph {
 
@@ -84,6 +85,11 @@ public:
     int other(int w)
     {
         return from(w) ? v_ : u_;
+    }
+
+    static double infinity()
+    {
+        return std::numeric_limits<double>::infinity();
     }
 };
 

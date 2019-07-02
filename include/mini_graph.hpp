@@ -13,5 +13,6 @@
 #include "weight/Edge.hpp"
 #include "weight/edges.hpp"
 #include "weight/GraphPrinter.hpp"
+#include "weight/PrimMST.hpp"
 #include "weight/SparsMultiGraph.hpp"
 #endif

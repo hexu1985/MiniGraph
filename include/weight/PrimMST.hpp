@@ -1,0 +1,59 @@
+#ifndef MINI_GRAPH_WEIGHT_PRIM_MST_INC
+#define MINI_GRAPH_WEIGHT_PRIM_MST_INC
+
+namespace MiniGraph {
+
+namespace weight {
+
+// Prim's Algorithm of Minimum Spanning Trees
+// Prim算法: 最小生成树
+template <class Graph>
+class PrimMST {
+private:
+    const Graph &graph_;
+    std::vector<double> weight_;// weight_[w]是从w到MST的最短边的权重
+    std::vector<Edge *> from_;  // from_[w]是从w到MST的最短边
+    std::vector<Edge *> tree_;   // MST中的边
+
+public:
+    PrimMST(const Graph &graph): graph_(graph), 
+        weight_(graph.vertexCount(), Edge::infinity()),
+        from_(graph.vertexCount(), nullptr),
+        tree_(graph.vertexCount(), nullptr)
+    {
+    }
+
+    void search()
+    {
+        int min = -1;
+        for (int v = 0; min != 0; v = min) {
+            min = 0;
+            for (int w = 1; w < graph_.vertexCount(); w++) {
+                if (tree_[w] == nullptr) {
+                    auto e = graph_.edge(v, w);
+                    if (e) {    // e != nullptr
+                        if (e->weight() < weight_[w]) {
+                            weight_[w] = e->weight();
+                            from_[w] = e;
+                        }
+                    }
+                    if (weight_[w] < weight_[min])
+                        min = w;
+                }
+            }
+            if (min)
+                tree_[min] = from_[min];
+        }
+    }
+
+    const std::vector<Edge *> &getTreeEdges()
+    {
+        return tree_;
+    }
+};
+
+}	// namespace weight
+
+}	// namespace MiniGraph
+
+#endif
