@@ -37,7 +37,8 @@ int main()
 
     cout << "Prim's MST edges:\n";
     for (auto edge: mst.getTreeEdges()) {
-        cout << edge->u() << '-' << edge->v() << ": " << edge->weight() << '\n';
+		if (edge)
+			cout << edge->u() << '-' << edge->v() << ": " << edge->weight() << '\n';
     }
 
     return 0;
