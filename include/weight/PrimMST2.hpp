@@ -2,6 +2,7 @@
 #define MINI_GRAPH_WEIGHT_PRIM_MST2_INC
 
 #include <vector>
+#include <unordered_set>
 #include "Edge.hpp"
 #include "RefPriorityQueue.hpp"
 
@@ -58,11 +59,13 @@ public:
 
     std::vector<Edge *> getTreeEdges()
     {
-        std::vector<Edge *> edges;
-        for (auto edge: tree_)
-            if (edge)
-                edges.push_back(edge);
-        return std::move(edges);
+		std::unordered_set<Edge *> edges;
+		for (auto e: tree_) {
+			if (e) {
+				edges.insert(e);
+			}
+		}
+		return std::vector<Edge *>(edges.begin(), edges.end());
     }
 };
 

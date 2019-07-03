@@ -28,7 +28,9 @@ private:
                 exch(currentPos, parentPos);
                 currentPos = parentPos;
                 parentPos = (currentPos-1)/2;
-            }
+            } else {
+				break;
+			}
         }
     }
 
@@ -43,7 +45,9 @@ private:
                 exch(currentPos, childPos);
                 currentPos = childPos;
                 childPos = 2*currentPos+1;
-            }
+            } else {
+				break;
+			}
         }
     }
 
