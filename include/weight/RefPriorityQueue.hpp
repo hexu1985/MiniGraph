@@ -65,7 +65,7 @@ public:
         fixUp(i);
     }
 
-    int getMin() 
+    int deleteMin() 
     { 
         assert(!pqList_.empty());
 

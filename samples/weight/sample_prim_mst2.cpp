@@ -36,9 +36,13 @@ int main()
     mst.search();
 
     cout << "Prim's MST edges:\n";
+    auto sum = 0.0;
     for (auto edge: mst.getTreeEdges()) {
         cout << edge->u() << '-' << edge->v() << ": " << edge->weight() << '\n';
+        sum += edge->weight();
     }
+
+    cout << "MST total weight: " << sum;
 
     return 0;
 }

@@ -33,7 +33,7 @@ public:
         RefPriorityQueue<double> pQ(weight_);
         pQ.insert(s);
         while (!pQ.isEmpty()) {
-            int v = pQ.getMin();
+            int v = pQ.deleteMin();
             tree_[v] = from_[v];
             for (auto e: graph_.getAdjIterator(v)) {
                 int w = e->other(v);
