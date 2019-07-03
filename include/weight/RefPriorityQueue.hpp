@@ -38,7 +38,7 @@ private:
     { 
         int childPos = 2*currentPos+1;
         while (childPos < lastPos) {
-            if ((childPos+1 < lastPos) && refList_[pqList_[currentPos+1]] < refList_[pqList_[currentPos]])
+            if ((childPos+1 < lastPos) && refList_[pqList_[childPos+1]] < refList_[pqList_[childPos]])
                 childPos = childPos + 1;
 
             if (refList_[pqList_[childPos]] < refList_[pqList_[currentPos]]) {

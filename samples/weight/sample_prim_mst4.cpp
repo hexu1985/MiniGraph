@@ -1,5 +1,5 @@
-/** \example sample_prim_mst2.cpp
- * This is an example of how to use the PrimMST2 class.
+/** \example sample_prim_mst4.cpp
+ * This is an example of how to use the PrimMST4 class.
  */
 #include <vector>
 #include "mini_graph.hpp"
@@ -32,7 +32,7 @@ int main()
 
     cout << endl;
 
-    PrimMST2<DenseGraph> mst(graph);
+    PrimMST4<DenseGraph> mst(graph);
     mst.search();
 
     cout << "Prim's MST edges:\n";

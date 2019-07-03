@@ -15,6 +15,8 @@
 #include "weight/GraphPrinter.hpp"
 #include "weight/PrimMST.hpp"
 #include "weight/PrimMST2.hpp"
+#include "weight/PrimMST3.hpp"
+#include "weight/PrimMST4.hpp"
 #include "weight/RefPriorityQueue.hpp"
 #include "weight/SparsMultiGraph.hpp"
 #endif
