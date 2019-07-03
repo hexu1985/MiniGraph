@@ -22,14 +22,6 @@ private:
     std::vector<Edge *> from_;  // from_[w]是从w到MST的最短边
     std::vector<Edge *> tree_;   // MST中的边
 
-public:
-    PrimMST2(const Graph &graph): graph_(graph), 
-        weight_(graph.vertexCount(), Edge::infinity()),
-        from_(graph.vertexCount(), nullptr),
-        tree_(graph.vertexCount(), nullptr)
-    {
-    }
-
     void pfs(int s)
     {
         RefPriorityQueue<double> pQ(weight_);
@@ -52,7 +44,11 @@ public:
         }
     }
 
-    void search()
+public:
+    PrimMST2(const Graph &graph): graph_(graph), 
+        weight_(graph.vertexCount(), Edge::infinity()),
+        from_(graph.vertexCount(), nullptr),
+        tree_(graph.vertexCount(), nullptr)
     {
         for (int v = 0; v < graph_.vertexCount(); v++)
             if (tree_[v] == nullptr)

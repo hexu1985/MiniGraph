@@ -23,14 +23,6 @@ private:
     std::vector<Edge *> tree_;   // MST中的边
     std::vector<Edge> loop_;     // 自环
 
-public:
-    PrimMST3(const Graph &graph): graph_(graph), 
-        weight_(graph.vertexCount(), Edge::infinity()),
-        from_(graph.vertexCount(), nullptr),
-        tree_(graph.vertexCount(), nullptr)
-    {
-    }
-
     void pfs(int s)
     {
         RefPriorityQueue<double> pQ(weight_);
@@ -53,7 +45,11 @@ public:
         }
     }
 
-    void search()
+public:
+    PrimMST3(const Graph &graph): graph_(graph), 
+        weight_(graph.vertexCount(), Edge::infinity()),
+        from_(graph.vertexCount(), nullptr),
+        tree_(graph.vertexCount(), nullptr)
     {
         for (int v = 0; v < graph_.vertexCount(); v++) {
             if (tree_[v] == nullptr) {

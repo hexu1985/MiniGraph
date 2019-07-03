@@ -24,10 +24,6 @@ public:
         from_(graph.vertexCount(), nullptr),
         tree_(graph.vertexCount(), nullptr)
     {
-    }
-
-    void search()
-    {
         int min = -1;
         for (int v = 0; min != 0; v = min) {
             min = 0;

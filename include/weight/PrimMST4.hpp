@@ -24,16 +24,6 @@ private:
     std::vector<bool> inTree_;      // inTree_[w]表示w是否在MST中
     std::vector<bool> isVisited_;   // isVisited_[w]表示w是否被访问
 
-public:
-    PrimMST4(const Graph &graph): graph_(graph), 
-        weight_(graph.vertexCount(), Edge::infinity()),
-        from_(graph.vertexCount(), nullptr),
-        tree_(graph.vertexCount(), nullptr),
-        inTree_(graph.vertexCount(), false),
-        isVisited_(graph.vertexCount(), false)
-    {
-    }
-
     void pfs(int s)
     {
         RefPriorityQueue<double> pQ(weight_);
@@ -59,7 +49,13 @@ public:
         }
     }
 
-    void search()
+public:
+    PrimMST4(const Graph &graph): graph_(graph), 
+        weight_(graph.vertexCount(), Edge::infinity()),
+        from_(graph.vertexCount(), nullptr),
+        tree_(graph.vertexCount(), nullptr),
+        inTree_(graph.vertexCount(), false),
+        isVisited_(graph.vertexCount(), false)
     {
         for (int v = 0; v < graph_.vertexCount(); v++)
             if (tree_[v] == nullptr)

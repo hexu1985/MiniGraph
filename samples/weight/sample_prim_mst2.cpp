@@ -33,7 +33,6 @@ int main()
     cout << endl;
 
     PrimMST2<DenseGraph> mst(graph);
-    mst.search();
 
     cout << "Prim's MST edges:\n";
     auto sum = 0.0;
