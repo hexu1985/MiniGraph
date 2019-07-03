@@ -1,6 +1,9 @@
 #ifndef MINI_GRAPH_WEIGHT_PRIM_MST_INC
 #define MINI_GRAPH_WEIGHT_PRIM_MST_INC
 
+#include <vector>
+#include "Edge.hpp"
+
 namespace MiniGraph {
 
 namespace weight {
