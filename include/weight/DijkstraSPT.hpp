@@ -3,12 +3,13 @@
 
 #include <vector>
 #include "Edge.hpp"
+#include "RefPriorityQueue.hpp"
 
 namespace MiniGraph {
 
 namespace weight {
 
-template <class Graph, class Edge> 
+template <class Graph> 
 class DijkstraSPT { 
 private:
     const Graph &graph_;
@@ -34,7 +35,6 @@ public:
             if (v != s && tree_[v] == nullptr) 
                 return;  
 
-            typename Graph::adjIterator A(G, v); 
             for (auto e: graph_.getAdjIterator(v)) { 
                 int w = e->other(v); 
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
@@ -46,8 +46,25 @@ public:
         }
     }
 
-    Edge *pathR(int v) const { return tree_[v]; }
+    Edge *tree(int v) const { return tree_[v]; }
     double dist(int v) const { return dist_[v]; }
+
+    std::vector<Edge *> path(int v) const 
+    {
+        std::vector<Edge *> edges;
+        Edge *edge = tree(v);
+        edges.push_back(edge);
+
+        while (edge->u() != edge->v()) {
+            v = edge->other(v);
+            edge = tree(v);
+            edges.push_back(edge); 
+        }
+
+        std::reverse(edges.begin(), edges.end());
+
+        return std::move(edges);
+    }
 };
 
 }	// namespace weight
