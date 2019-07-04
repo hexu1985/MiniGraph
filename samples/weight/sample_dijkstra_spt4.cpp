@@ -1,5 +1,5 @@
-/** \example sample_dijkstra_spt3.cpp
- * This is an example of how to use the DijkstraSPT class.
+/** \example sample_dijkstra_spt4.cpp
+ * This is an example of how to use the DijkstraSPT2 class.
  */
 #include <vector>
 #include "mini_graph.hpp"
@@ -36,7 +36,7 @@ int main()
     for (auto &edge: edges)
         graph.insert(&edge);
 
-    DijkstraSPT<SparseMultiGraph> spt(graph, 0);
+    DijkstraSPT2<SparseMultiGraph> spt(graph, 0);
     for (int i = 0; i < graph.vertexCount(); i++) {
         cout << i << ", dist: " << spt.dist(i) << ", path: "; 
         print(spt.path(i));

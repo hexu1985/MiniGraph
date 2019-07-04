@@ -36,7 +36,7 @@ public:
         { 
             int v = pQ.deleteMin();
             for (auto e: graph_.getAdjIterator(v)) { 
-                int w = e->v(); 
+                int w = e->other(v); 
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
                     dist_[w] = dist_[v] + e->weight(); 
                     pQ.lower(w); 
