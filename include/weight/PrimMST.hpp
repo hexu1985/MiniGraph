@@ -14,13 +14,13 @@ template <class Graph>
 class PrimMST {
 private:
     const Graph &graph_;
-    std::vector<double> weight_;// weight_[w]是从w到MST的最短边的权重
+    std::vector<double> cost_;  // cost_[w]是从w到MST的最短边的权重
     std::vector<Edge *> from_;  // from_[w]是从w到MST的最短边
-    std::vector<Edge *> tree_;   // MST中的边
+    std::vector<Edge *> tree_;  // MST中的边
 
 public:
     PrimMST(const Graph &graph): graph_(graph), 
-        weight_(graph.vertexCount(), Edge::infinity()),
+        cost_(graph.vertexCount(), Edge::infinity()),
         from_(graph.vertexCount(), nullptr),
         tree_(graph.vertexCount(), nullptr)
     {
@@ -31,12 +31,12 @@ public:
                 if (tree_[w] == nullptr) {
                     auto e = graph_.edge(v, w);
                     if (e) {    // e != nullptr
-                        if (e->weight() < weight_[w]) {
-                            weight_[w] = e->weight();
+                        if (e->weight() < cost_[w]) {
+                            cost_[w] = e->weight();
                             from_[w] = e;
                         }
                     }
-                    if (weight_[w] < weight_[min])
+                    if (cost_[w] < cost_[min])
                         min = w;
                 }
             }

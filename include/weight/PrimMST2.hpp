@@ -18,13 +18,13 @@ template <class Graph>
 class PrimMST2 {
 private:
     const Graph &graph_;
-    std::vector<double> weight_;// weight_[w]是从w到MST的最短边的权重
+    std::vector<double> cost_;  // cost_[w]是从w到MST的最短边的权重
     std::vector<Edge *> from_;  // from_[w]是从w到MST的最短边
-    std::vector<Edge *> tree_;   // MST中的边
+    std::vector<Edge *> tree_;  // MST中的边
 
     void pfs(int s)
     {
-        RefPriorityQueue<double> pQ(weight_);
+        RefPriorityQueue<double> pQ(cost_);
         pQ.insert(s);
         while (!pQ.isEmpty()) {
             int v = pQ.deleteMin();
@@ -32,11 +32,11 @@ private:
             for (auto e: graph_.getAdjIterator(v)) {
                 int w = e->other(v);
                 if (from_[w] == nullptr) {
-                    weight_[w] = e->weight();
+                    cost_[w] = e->weight();
                     pQ.insert(w);
                     from_[w] = e;
-                } else if (tree_[w] == nullptr && e->weight() < weight_[w]) {
-                    weight_[w] = e->weight();
+                } else if (tree_[w] == nullptr && e->weight() < cost_[w]) {
+                    cost_[w] = e->weight();
                     pQ.lower(w);
                     from_[w] = e;
                 }
@@ -46,7 +46,7 @@ private:
 
 public:
     PrimMST2(const Graph &graph): graph_(graph), 
-        weight_(graph.vertexCount(), Edge::infinity()),
+        cost_(graph.vertexCount(), Edge::infinity()),
         from_(graph.vertexCount(), nullptr),
         tree_(graph.vertexCount(), nullptr)
     {
