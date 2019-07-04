@@ -22,7 +22,7 @@ int main()
         {1,4, .32},
         {4,2, .32},
         {5,1, .29}
-    }; // graph2.jpg
+    }; // digraph1.jpg
 
     SparseMultiGraph graph(vertexNumber, true);  // directed true
 

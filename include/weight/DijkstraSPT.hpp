@@ -15,12 +15,14 @@ private:
     const Graph &graph_;
     std::vector<double> dist_;
     std::vector<Edge *> tree_;
+	int s_;
 
 public:
     DijkstraSPT(const Graph &graph, int s): 
         graph_(graph), 
         dist_(graph.vertexCount(), Edge::infinity()),
-        tree_(graph.vertexCount(), nullptr)
+        tree_(graph.vertexCount(), nullptr),
+		s_(s)
     {
         RefPriorityQueue<double> pQ(dist_);
         for (int v = 0; v < graph_.vertexCount(); v++) 
@@ -51,12 +53,14 @@ public:
 
     std::vector<Edge *> path(int v) const 
     {
+		if (v == s_)
+			return std::vector<Edge *>();
+
         std::vector<Edge *> edges;
         Edge *edge = tree(v);
         edges.push_back(edge);
 
-        while (edge->u() != edge->v()) {
-            v = edge->other(v);
+        while ((v = edge->other(v)) != s_) {
             edge = tree(v);
             edges.push_back(edge); 
         }

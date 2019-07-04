@@ -28,16 +28,15 @@ int main()
         {1,4, .32},
         {4,2, .32},
         {5,1, .29}
-    }; // graph2.jpg
+    }; // digraph1.jpg
 
     SparseMultiGraph graph(vertexNumber, true);  // directed true
 
-    cout << "insert edges\n";
     for (auto &edge: edges)
         graph.insert(&edge);
 
     DijkstraSPT<SparseMultiGraph> spt(graph, 0);
-    for (int i = 0; i < graph.vertexCount(); i++) {
+    for (int i = 0; i < graph.vertexCount(); i++) {	// output对应:digraph1-spt-a.jpg, digraph1-spt-b.jpg
         cout << i << ", dist: " << spt.dist(i) << ", path: "; 
         print(spt.path(i));
         cout << endl;
