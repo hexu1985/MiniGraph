@@ -26,10 +26,13 @@ public:
     TopologicalSort(const Graph &graph): DFS<Graph>(graph), 
         post_(graph.vertexCount()),
         postI_(graph.vertexCount())
-    {}
-
-    std::vector<int> getTopologicalOrder() const
     {
+    }
+
+    std::vector<int> getTopologicalOrder()
+    {
+        if (clock_ == 0)
+            this->search();
         return std::vector<int>(postI_.rbegin(), postI_.rend());
     }
 };

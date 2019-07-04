@@ -1,4 +1,4 @@
-/** \example sample_topological_sort1.cpp
+/** \example sample_topological_sort2.cpp
  * This is an example of how to use the TopologicalSort class.
  */
 #include <vector>
@@ -17,7 +17,7 @@ int main()
         {9,12}, {11,12}
     };  // digraph2.jpg
 
-    DenseGraph graph(vertexNumber, true);  // directed true
+    SparseMultiGraph graph(vertexNumber, true);  // directed true
 
     cout << "insert edges\n";
     for (auto edge: edges)
@@ -31,7 +31,7 @@ int main()
     GraphPrinter::showAdjLists(graph);
     cout << endl;
 
-    TopologicalSort<DenseGraph> ts(graph);
+    TopologicalSort<SparseMultiGraph> ts(graph);
     auto tsI = ts.getTopologicalOrder();    // 结果可以参考digraph2-topological-order.jpg
 
     cout << "Topological Order of Graph:\n";
