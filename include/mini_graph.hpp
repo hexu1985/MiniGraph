@@ -11,6 +11,7 @@
 #include "normal/TracedDFS.hpp"
 #include "weight/DenseGraph.hpp"
 #include "weight/DijkstraSPT.hpp"
+#include "weight/DijkstraSPT2.hpp"
 #include "weight/Edge.hpp"
 #include "weight/edges.hpp"
 #include "weight/GraphPrinter.hpp"
