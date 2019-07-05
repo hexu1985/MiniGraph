@@ -35,7 +35,7 @@ std::vector<Edge> edges(Graph &graph)
         }
     }
 
-    return std::move(vec);
+    return vec;
 }
 
 }   // namespace normal

@@ -66,7 +66,7 @@ public:
         for (auto edge: tree_)
             if (edge && edge->u() != edge->v())
                 edges.push_back(edge);
-        return std::move(edges);
+        return edges;
     }
 };
 

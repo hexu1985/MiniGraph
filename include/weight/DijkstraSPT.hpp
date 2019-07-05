@@ -67,7 +67,7 @@ public:
 
         std::reverse(edges.begin(), edges.end());
 
-        return std::move(edges);
+        return edges;
     }
 };
 

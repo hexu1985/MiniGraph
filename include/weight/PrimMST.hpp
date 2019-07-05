@@ -51,7 +51,7 @@ public:
         for (auto edge: tree_)
             if (edge)
                 edges.push_back(edge);
-        return std::move(edges);
+        return edges;
     }
 };
 
