@@ -18,6 +18,9 @@ namespace normal {
  * @brief 带Trace的深度优先搜索算法
  *
  * @tparam Graph 被搜索的图类型
+ *
+ * @note 主体算法几乎和DFS.hpp实现一致, 唯一的区别是增进parent_向量,
+ *       parent_[v]记录explore(v)的时候, v的父结点
  */
 template <class Graph> 
 class TracedDFS {

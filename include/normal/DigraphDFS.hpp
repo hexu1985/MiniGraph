@@ -4,6 +4,8 @@
  * @author hexu_1985@sina.com
  * @version 1.0
  * @date 2019-06-24
+ *
+ * @see 算法概论中文版: 章节3.3.1
  */
 #ifndef MINI_GRAPH_NORMAL_DIGRAPH_DFS_INC
 #define MINI_GRAPH_NORMAL_DIGRAPH_DFS_INC
