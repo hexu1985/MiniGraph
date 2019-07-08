@@ -4,6 +4,8 @@
  * @author hexu_1985@sina.com
  * @version 1.0
  * @date 2019-06-24
+ *
+ * @see 算法概论中文版: 章节3.2
  */
 #ifndef MINI_GRAPH_NORMAL_DFS_INC
 #define MINI_GRAPH_NORMAL_DFS_INC
@@ -33,43 +35,11 @@ protected:
     virtual void previsit(int v) {}
 
     /**
-     * @brief 顶点第一次被访问的处理函数, 默认行为是设置顶点已被访问标志
-     *
-     * @param v 顶点索引
-     */
-    virtual void visit(int v) { visited_[v] = true; }
-
-    /**
      * @brief 顶点第一次被访问的后处理函数
      *
      * @param v 顶点索引
      */
     virtual void postvisit(int v) {}
-
-    /**
-     * @brief 顶点是否被访问
-     *
-     * @param v 顶点索引
-     *
-     * @return 如果顶点已被访问, 返回true, 否则返回false
-     */
-    virtual bool isVisited(int v) { return visited_[v]; }
-
-    /**
-     * @brief 深度优先地搜索图
-     *
-     * @param v 起始顶点
-     */
-    virtual void explore(int v)
-    {
-        previsit(v);
-        visit(v);
-        for (auto w: graph_.getAdjIterator(v)) {
-            if (!isVisited(w))
-                explore(w);
-        }
-        postvisit(v);
-    }
 
 public:
     /**
@@ -77,7 +47,25 @@ public:
      *
      * @param graph 被搜索的图的对象
      */
-    DFS(const Graph &graph): graph_(graph), visited_(graph.vertexCount(), false) {}
+    DFS(const Graph &graph): graph_(graph), 
+        visited_(graph.vertexCount(), false)
+    {}
+
+    /**
+     * @brief 深度优先地搜索图
+     *
+     * @param v 起始顶点
+     */
+    void explore(int v)
+    {
+        visited_[v] = true;
+        previsit(v);
+        for (auto u: graph_.getAdjIterator(v)) {
+            if (!visited_[u])
+                explore(u);
+        }
+        postvisit(v);
+    }
 
     /**
      * @brief 深度优先搜索的入口函数
@@ -85,7 +73,7 @@ public:
     void search()
     {
         for (int v = 0; v < graph_.vertexCount(); v++)
-            if (!isVisited(v))
+            if (!visited_[v])
                 explore(v);
     }
 };
