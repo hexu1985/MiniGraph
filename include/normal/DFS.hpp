@@ -5,7 +5,7 @@
  * @version 1.0
  * @date 2019-06-24
  *
- * @see 算法概论中文版: 章节3.2
+ * @see 算法概论中文版: 章节3.2.1~3.2.2
  */
 #ifndef MINI_GRAPH_NORMAL_DFS_INC
 #define MINI_GRAPH_NORMAL_DFS_INC
