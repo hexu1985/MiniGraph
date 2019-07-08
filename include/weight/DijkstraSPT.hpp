@@ -51,23 +51,23 @@ public:
     Edge *tree(int v) const { return tree_[v]; }
     double dist(int v) const { return dist_[v]; }
 
-    std::vector<Edge *> path(int v) const 
+    std::vector<int> path(int v) const 
     {
 		if (v == s_)
-			return std::vector<Edge *>();
+			return std::vector<int>();
 
-        std::vector<Edge *> edges;
+        std::vector<int> p;
         Edge *edge = tree(v);
-        edges.push_back(edge);
+        p.push_back(edge->other(v));
 
         while ((v = edge->other(v)) != s_) {
             edge = tree(v);
-            edges.push_back(edge); 
+            p.push_back(edge->other(v)); 
         }
 
-        std::reverse(edges.begin(), edges.end());
+        std::reverse(p.begin(), p.end());
 
-        return edges;
+        return p;
     }
 };
 

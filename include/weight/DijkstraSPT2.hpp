@@ -14,22 +14,20 @@ class DijkstraSPT2 {
 private:
     const Graph &graph_;
     std::vector<double> dist_;
-    std::vector<Edge *> tree_;
-    std::vector<Edge> loop_;
+    std::vector<int> prev_;
 
 public:
     DijkstraSPT2(const Graph &graph, int s): 
         graph_(graph), 
         dist_(graph.vertexCount(), Edge::infinity()),
-        tree_(graph.vertexCount(), nullptr)
+        prev_(graph.vertexCount(), -1)
     {
         RefPriorityQueue<double> pQ(dist_);
         for (int v = 0; v < graph_.vertexCount(); v++) 
             pQ.insert(v);
 
         dist_[s] = 0.0; 
-        loop_.push_back(Edge(s, s, 0.0));
-        tree_[s] = &loop_[loop_.size()-1];
+        prev_[s] = s;
         pQ.lower(s);  
 
         while (!pQ.isEmpty()) 
@@ -40,29 +38,29 @@ public:
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
                     dist_[w] = dist_[v] + e->weight(); 
                     pQ.lower(w); 
-                    tree_[w] = e; 
+                    prev_[w] = v; 
                 }
             }
         }
     }
 
-    Edge *tree(int v) const { return tree_[v]; }
+    int prev(int v) const { return prev_[v]; }
     double dist(int v) const { return dist_[v]; }
 
-    std::vector<Edge *> path(int v) const 
+    std::vector<int> path(int v) const 
     {
-        std::vector<Edge *> edges;
-        Edge *edge = tree(v);
+        std::vector<int> p;
+        int u = prev(v);
 
-        while (edge->u() != edge->v()) {
-            edges.push_back(edge);
-            v = edge->other(v);
-            edge = tree(v);
+        while (u != v) {
+            p.push_back(u);
+            v = u;
+            u = prev(v);
         }
 
-        std::reverse(edges.begin(), edges.end());
+        std::reverse(p.begin(), p.end());
 
-        return edges;
+        return p;
     }
 };
 

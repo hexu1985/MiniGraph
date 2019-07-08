@@ -7,12 +7,6 @@
 using namespace std;
 using namespace MiniGraph::weight;
 
-void print(const std::vector<Edge *> edges)
-{
-    for (auto edge: edges)
-        cout << edge->u() << "-" << edge->v() << " ";
-}
-
 int main()
 {
     int vertexNumber = 8;
@@ -39,7 +33,9 @@ int main()
     DijkstraSPT2<SparseMultiGraph> spt(graph, 0);
     for (int i = 0; i < graph.vertexCount(); i++) {
         cout << i << ", dist: " << spt.dist(i) << ", path: "; 
-        print(spt.path(i));
+        for (auto v: spt.path(i))
+            cout << v << "->"; 
+        cout << i;
         cout << endl;
     }
 
