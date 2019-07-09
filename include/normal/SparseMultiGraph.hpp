@@ -4,6 +4,9 @@
  * @author hexu_1985@sina.com
  * @version 1.0
  * @date 2019-06-24
+ *
+ * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
+ *      Chapter 17
  */
 #ifndef MINI_GRAPH_NORMAL_SPARSE_MUTLI_GRAPH_INC
 #define MINI_GRAPH_NORMAL_SPARSE_MUTLI_GRAPH_INC

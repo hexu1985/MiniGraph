@@ -1,4 +1,4 @@
-/** \example sample_undigraph_cc.cpp
+/** \example sample_undigraph_cc1.cpp
  * This is an example of how to use the UndigraphCC class.
  */
 #include <iostream>

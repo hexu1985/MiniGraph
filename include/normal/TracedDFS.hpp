@@ -27,7 +27,7 @@ class TracedDFS {
 protected:
     const Graph &graph_;
     std::vector<bool> visited_;
-    std::vector<int> parent_;
+    std::vector<int> parent_;   // parent vertex
 
     /**
      * @brief 顶点第一次被访问的预处理函数
@@ -58,9 +58,8 @@ public:
      * @brief 带Trace的深度优先地搜索图
      *
      * @param v 起始顶点
-     * @param p 父顶点
      */
-    void explore(int v) // p: parent vertex
+    void explore(int v)
     {
         visited_[v] = true;
         previsit(v);

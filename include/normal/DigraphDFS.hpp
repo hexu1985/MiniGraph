@@ -34,7 +34,8 @@ protected:
     std::vector<int> post_; // postvisit clock
 
     /**
-     * @brief 顶点第一次被访问的预处理函数, 更新顶点的pre数组的clock值
+     * @brief 顶点第一次被访问的预处理函数, 
+     *        更新顶点的pre数组的clock值
      *
      * @param v 顶点索引
      */
@@ -45,7 +46,8 @@ protected:
     }
 
     /**
-     * @brief 顶点第一次被访问的后处理函数, 更新顶点的post数组的clock值
+     * @brief 顶点第一次被访问的后处理函数, 
+     *        更新顶点的post数组的clock值
      *
      * @param v 顶点索引
      */

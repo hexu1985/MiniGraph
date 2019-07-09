@@ -30,7 +30,8 @@ protected:
     std::vector<int> ccNum_; 
 
     /**
-     * @brief 顶点第一次被访问的预处理函数
+     * @brief 顶点第一次被访问的预处理函数,
+     *        更新顶点的ccNum数组的连通分量ID
      *
      * @param v 顶点索引
      */
