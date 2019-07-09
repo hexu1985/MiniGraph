@@ -1,5 +1,5 @@
-#ifndef MINI_GRAPH_NORMAL_DIGRAPH_TOPOLOGICAL_SORT_INC
-#define MINI_GRAPH_NORMAL_DIGRAPH_TOPOLOGICAL_SORT_INC
+#ifndef MINI_GRAPH_NORMAL_DIGRAPH_TS_INC
+#define MINI_GRAPH_NORMAL_DIGRAPH_TS_INC
 
 #include <vector>
 #include "DFS.hpp"
@@ -8,8 +8,13 @@ namespace MiniGraph {
 
 namespace normal {
 
+/**
+ * @brief topological sort of digraph
+ *
+ * @tparam Graph
+ */
 template <class Graph>
-class TopologicalSort: public DFS<Graph> {
+class DigraphTS: public DFS<Graph> {
 private:
     int clock_ = 0;
     std::vector<int> post_;     // postvisit clock
@@ -23,13 +28,13 @@ private:
     }
 
 public:
-    TopologicalSort(const Graph &graph): DFS<Graph>(graph), 
+    DigraphTS(const Graph &graph): DFS<Graph>(graph), 
         post_(graph.vertexCount()),
         postI_(graph.vertexCount())
     {
     }
 
-    std::vector<int> getTopologicalOrder()
+    std::vector<int> sort()
     {
         if (clock_ == 0)
             this->search();

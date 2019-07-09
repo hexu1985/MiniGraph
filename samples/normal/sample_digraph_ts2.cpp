@@ -1,5 +1,5 @@
-/** \example sample_topological_sort1.cpp
- * This is an example of how to use the TopologicalSort class.
+/** \example sample_digraph_ts2.cpp
+ * This is an example of how to use the DigraphTS class.
  */
 #include <vector>
 #include "mini_graph.hpp"
@@ -17,7 +17,7 @@ int main()
         {9,12}, {11,12}
     };  // digraph2.jpg
 
-    DenseGraph graph(vertexNumber, true);  // directed true
+    SparseMultiGraph graph(vertexNumber, true);  // directed true
 
     cout << "insert edges\n";
     for (auto edge: edges)
@@ -31,8 +31,8 @@ int main()
     GraphPrinter::showAdjLists(graph);
     cout << endl;
 
-    TopologicalSort<DenseGraph> ts(graph);
-    auto tsI = ts.getTopologicalOrder();    // 结果可以参考digraph2-topological-order.jpg
+    DigraphTS<SparseMultiGraph> ts(graph);
+    auto tsI = ts.sort();    // 结果可以参考digraph2-topological-order.jpg
 
     cout << "Topological Order of Graph:\n";
     for (auto v: tsI)
