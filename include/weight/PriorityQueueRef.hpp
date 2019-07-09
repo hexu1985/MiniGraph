@@ -1,5 +1,5 @@
-#ifndef MINI_GRAPH_REF_PRIORITY_QUEUE_INC
-#define MINI_GRAPH_REF_PRIORITY_QUEUE_INC
+#ifndef MINI_GRAPH_PRIORITY_QUEUE_REF_INC
+#define MINI_GRAPH_PRIORITY_QUEUE_REF_INC
 
 #include <vector>
 #include <unordered_map>
@@ -76,11 +76,10 @@ public:
 
         // 交换pqList的0和size-1下标元素,
         // 从pqList的0下标开始heapify pqList
-        int currentPos = 0;
-        int idxOfKeyList = pqList_[currentPos];
+        int idxOfKeyList = pqList_[0];
         int lastPos = pqList_.size()-1;
-        exch(currentPos, lastPos); 
-        siftDown(currentPos, lastPos);
+        exch(0, lastPos); 
+        siftDown(0, lastPos);
 
         // pop minimum key index
         pqList_.pop_back();
