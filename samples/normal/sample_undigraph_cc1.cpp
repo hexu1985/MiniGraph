@@ -1,5 +1,5 @@
-/** \example sample_connected_components1.cpp
- * This is an example of how to use the ConnectedComponents class.
+/** \example sample_undigraph_cc.cpp
+ * This is an example of how to use the UndigraphCC class.
  */
 #include <iostream>
 #include <iomanip>
@@ -21,7 +21,7 @@ int main()
     for (auto edge: edges)
         graph.insert(edge);
 
-    ConnectedComponents<SparseMultiGraph> cc(graph);
+    UndigraphCC<SparseMultiGraph> cc(graph);
     cc.search();
 
     cout << "there are " << graph.edgeCount() << " edges. " << endl;

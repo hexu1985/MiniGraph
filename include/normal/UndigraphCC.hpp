@@ -1,5 +1,5 @@
 /**
- * @file ConnectedComponents.hpp
+ * @file UndigraphCC.hpp
  * @brief 计算无向图图的连通分量(Connected Components)
  * @author hexu_1985@sina.com
  * @version 1.0
@@ -7,8 +7,8 @@
  *
  * @see 算法概论中文版: 章节3.2.3
  */
-#ifndef MINI_GRAPH_NORNAL_CONNECTED_COMPONENTS_INC
-#define MINI_GRAPH_NORNAL_CONNECTED_COMPONENTS_INC
+#ifndef MINI_GRAPH_NORNAL_UNDIGRAPH_CC_INC
+#define MINI_GRAPH_NORNAL_UNDIGRAPH_CC_INC
 
 #include <vector>
 #include "DFS.hpp"
@@ -23,7 +23,7 @@ namespace normal {
  * @tparam Graph 被计算的图类型
  */
 template <class Graph> 
-class ConnectedComponents: public DFS<Graph> { 
+class UndigraphCC: public DFS<Graph> { 
 protected:
     const Graph &graph_;
     int cCnt_ = 0;
@@ -45,7 +45,7 @@ public:
      *
      * @param graph 被计算的图的对象
      */
-    ConnectedComponents(const Graph &graph): DFS<Graph>(graph), graph_(graph), cCnt_(0), ccNum_(graph.vertexCount(), -1) {}
+    UndigraphCC(const Graph &graph): DFS<Graph>(graph), graph_(graph), cCnt_(0), ccNum_(graph.vertexCount(), -1) {}
 
     /**
      * @brief 计算图的连通分量的入口函数(基于DFS)
