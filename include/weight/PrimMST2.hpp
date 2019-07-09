@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_set>
 #include "Edge.hpp"
-#include "RefPriorityQueue.hpp"
+#include "PriorityQueueRef.hpp"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ private:
 
     void pfs(int s)
     {
-        RefPriorityQueue<double> pQ(cost_);
+        PriorityQueueRef<double> pQ(cost_);
         pQ.insert(s);
         while (!pQ.isEmpty()) {
             int v = pQ.deleteMin();
@@ -37,7 +37,7 @@ private:
                     from_[w] = e;
                 } else if (tree_[w] == nullptr && e->weight() < cost_[w]) {
                     cost_[w] = e->weight();
-                    pQ.lower(w);
+                    pQ.decreaseKey(w);
                     from_[w] = e;
                 }
             }

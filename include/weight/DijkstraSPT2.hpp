@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Edge.hpp"
-#include "RefPriorityQueue.hpp"
+#include "PriorityQueueRef.hpp"
 
 namespace MiniGraph {
 
@@ -22,13 +22,13 @@ public:
         dist_(graph.vertexCount(), Edge::infinity()),
         prev_(graph.vertexCount(), -1)
     {
-        RefPriorityQueue<double> pQ(dist_);
+        PriorityQueueRef<double> pQ(dist_);
         for (int v = 0; v < graph_.vertexCount(); v++) 
             pQ.insert(v);
 
         dist_[s] = 0.0; 
         prev_[s] = s;
-        pQ.lower(s);  
+        pQ.decreaseKey(s);  
 
         while (!pQ.isEmpty()) 
         { 
@@ -37,7 +37,7 @@ public:
                 int w = e->other(v); 
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
                     dist_[w] = dist_[v] + e->weight(); 
-                    pQ.lower(w); 
+                    pQ.decreaseKey(w); 
                     prev_[w] = v; 
                 }
             }
