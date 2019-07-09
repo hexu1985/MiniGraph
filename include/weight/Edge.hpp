@@ -4,6 +4,9 @@
  * @author hexu_1985@sina.com
  * @version 1.0
  * @date 2019-06-25
+ *
+ * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
+ *      Chapter 20.1
  */
 #ifndef MINI_GRAPH_WEIGHT_EDGE_INC
 #define MINI_GRAPH_WEIGHT_EDGE_INC

@@ -6,7 +6,7 @@
  * @date 2019-06-24
  *
  * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
- *      Chapter 17.7
+ *      Chapter 17.3
  */
 #ifndef MINI_GRAPH_NORMAL_DENSE_GRAPH_INC
 #define MINI_GRAPH_NORMAL_DENSE_GRAPH_INC
