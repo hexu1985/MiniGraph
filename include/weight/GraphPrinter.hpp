@@ -1,5 +1,5 @@
 /**
- * @file GraphPrinter.hpp
+ * @file weight/GraphPrinter.hpp
  * @brief 输出图的邻接表表示
  * @author hexu_1985@sina.com
  * @version 1.0

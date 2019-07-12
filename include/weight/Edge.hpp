@@ -1,5 +1,5 @@
 /**
- * @file Edge.hpp
+ * @file weight/Edge.hpp
  * @brief 带权重的边
  * @author hexu_1985@sina.com
  * @version 1.0

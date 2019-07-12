@@ -1,5 +1,5 @@
 /**
- * @file DenseGraph.hpp
+ * @file weight/DenseGraph.hpp
  * @brief 一个稠密图实现, 基于邻接矩阵(不支持平行边)
  * @author hexu_1985@sina.com
  * @version 1.0

@@ -1,5 +1,5 @@
 /**
- * @file SparsMultiGraph.hpp
+ * @file weight/SparsMultiGraph.hpp
  * @brief 一个稀疏图实现, 基于邻接链表(支持平行边)
  * @author hexu_1985@sina.com
  * @version 1.0

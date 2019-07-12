@@ -1,5 +1,5 @@
 /**
- * @file DigrahpDFS.hpp
+ * @file normal/DigrahpDFS.hpp
  * @brief 有向图的深度优先搜索算法
  * @author hexu_1985@sina.com
  * @version 1.0

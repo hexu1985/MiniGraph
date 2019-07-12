@@ -1,5 +1,5 @@
 /**
- * @file UndigraphCC.hpp
+ * @file normal/UndigraphCC.hpp
  * @brief 计算无向图图的连通分量(Connected Components)
  * @author hexu_1985@sina.com
  * @version 1.0
