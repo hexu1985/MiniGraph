@@ -1,4 +1,4 @@
-/** \example sample_graph_printer1.cpp
+/** \example normal/sample_graph_printer1.cpp
  * This is an example of how to use the GraphPrinter class.
  */
 #include <vector>

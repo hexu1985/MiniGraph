@@ -1,4 +1,4 @@
-/** \example sample_prim_mst1.cpp
+/** \example weight/sample_prim_mst1.cpp
  * This is an example of how to use the PrimMST class.
  */
 #include <vector>

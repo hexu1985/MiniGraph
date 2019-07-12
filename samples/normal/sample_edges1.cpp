@@ -1,4 +1,4 @@
-/** \example sample_edges1.cpp
+/** \example normal/sample_edges1.cpp
  * This is an example of how to use the edges function.
  */
 #include <vector>

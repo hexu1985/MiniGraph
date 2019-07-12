@@ -1,4 +1,4 @@
-/** \example sample_dijkstra_spt1.cpp
+/** \example weight/sample_dijkstra_spt1.cpp
  * This is an example of how to use the DijkstraSPT class.
  */
 #include <vector>

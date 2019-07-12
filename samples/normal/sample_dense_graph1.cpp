@@ -1,4 +1,4 @@
-/** \example sample_dense_graph1.cpp
+/** \example normal/sample_dense_graph1.cpp
  * This is an example of how to use the DenseGraph class.
  */
 #include <vector>

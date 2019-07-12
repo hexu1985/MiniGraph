@@ -1,4 +1,4 @@
-/** \example sample_digraph_ts1.cpp
+/** \example normal/sample_digraph_ts1.cpp
  * This is an example of how to use the DigraphTS class.
  */
 #include <vector>
