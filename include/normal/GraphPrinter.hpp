@@ -11,7 +11,7 @@
 #include <iostream>
 #include <iomanip>
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -109,6 +109,6 @@ void GraphPrinter::showAdjMatrix(const Graph &G)
 
 }	// namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

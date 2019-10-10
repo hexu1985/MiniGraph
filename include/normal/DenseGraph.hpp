@@ -14,7 +14,7 @@
 #include <vector>
 #include "Edge.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -202,6 +202,6 @@ DenseGraph::AdjIterator end(const DenseGraph::AdjIterator &adj)
 
 }   // namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

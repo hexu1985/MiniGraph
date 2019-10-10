@@ -11,7 +11,7 @@
 #ifndef MINI_GRAPH_NORMAL_EDGE_INC
 #define MINI_GRAPH_NORMAL_EDGE_INC
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -35,6 +35,6 @@ struct Edge {
 
 }   // namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

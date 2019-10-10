@@ -5,7 +5,7 @@
 #include "mini_graph.hpp"
 
 using namespace std;
-using namespace MiniGraph::weight;
+using namespace mini_graph::weight;
 
 int main()
 {
@@ -39,7 +39,7 @@ int main()
     cout << endl;
 
     cout << "remove edges\n";
-    for (auto edge: MiniGraph::weight::edges(graph))
+    for (auto edge: mini_graph::weight::edges(graph))
         graph.remove(edge);
 
     // show edges

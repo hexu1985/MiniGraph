@@ -10,7 +10,7 @@
 
 #include <vector>
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -87,6 +87,6 @@ public:
 
 }   // namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

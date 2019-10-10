@@ -11,7 +11,7 @@
 #include <vector>
 #include "Edge.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -40,6 +40,6 @@ std::vector<Edge> edges(Graph &graph)
 
 }   // namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

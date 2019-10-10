@@ -11,7 +11,7 @@
 #include <iostream>
 #include <iomanip>
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace weight {
 
@@ -60,6 +60,6 @@ void GraphPrinter::showAdjLists(const Graph &graph)
 
 }	// namespace weight
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

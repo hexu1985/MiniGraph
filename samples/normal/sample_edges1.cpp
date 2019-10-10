@@ -5,7 +5,7 @@
 #include "mini_graph.hpp"
 
 using namespace std;
-using namespace MiniGraph::normal;
+using namespace mini_graph::normal;
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     cout << graph.edgeCount() << " edges in graph" << endl;
     cout << "there are:\n";
 
-    for (auto &edge: MiniGraph::normal::edges(graph))
+    for (auto &edge: mini_graph::normal::edges(graph))
         cout << edge.u << "-" << edge.v << '\n';
 
     return 0;

@@ -5,7 +5,7 @@
 #include "Edge.hpp"
 #include "PriorityQueueRef.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace weight {
 
@@ -73,6 +73,6 @@ public:
 
 }	// namespace weight
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

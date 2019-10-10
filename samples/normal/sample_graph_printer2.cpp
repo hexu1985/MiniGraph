@@ -5,7 +5,7 @@
 #include "mini_graph.hpp"
 
 using namespace std;
-using namespace MiniGraph::normal;
+using namespace mini_graph::normal;
 
 int main()
 {

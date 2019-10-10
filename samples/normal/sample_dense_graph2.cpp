@@ -5,7 +5,7 @@
 #include "mini_graph.hpp"
 
 using namespace std;
-using namespace MiniGraph::normal;
+using namespace mini_graph::normal;
 
 int main()
 {
@@ -37,7 +37,7 @@ int main()
     cout << endl;
 
     cout << "remove edges\n";
-    for (auto edge: MiniGraph::normal::edges(graph))
+    for (auto edge: mini_graph::normal::edges(graph))
         graph.remove(edge);
 
     // show edges

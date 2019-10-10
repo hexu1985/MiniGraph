@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_map>
 
-namespace MiniGraph {
+namespace mini_graph {
 
 template <class T>
 class PriorityQueueRef { 
@@ -94,6 +94,6 @@ public:
     }
 };
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

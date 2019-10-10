@@ -11,7 +11,7 @@
 #include <vector>
 #include "Edge.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace weight {
 
@@ -38,6 +38,6 @@ std::vector<Edge *> edges(const Graph &graph)
 
 }   // namespace weight
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

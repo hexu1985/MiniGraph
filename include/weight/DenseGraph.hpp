@@ -14,7 +14,7 @@
 #include <vector>
 #include "Edge.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace weight {
 
@@ -203,6 +203,6 @@ DenseGraph::AdjIterator end(const DenseGraph::AdjIterator &adj)
 
 }   // namespace weight
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif

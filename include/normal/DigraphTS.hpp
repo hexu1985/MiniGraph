@@ -14,7 +14,7 @@
 #include <vector>
 #include "DFS.hpp"
 
-namespace MiniGraph {
+namespace mini_graph {
 
 namespace normal {
 
@@ -70,7 +70,7 @@ public:
 
 }   // namespace normal
 
-}	// namespace MiniGraph
+}	// namespace mini_graph
 
 #endif
 
