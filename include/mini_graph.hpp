@@ -7,6 +7,7 @@
 #include "normal/Edge.hpp"
 #include "normal/edges.hpp"
 #include "normal/GraphPrinter.hpp"
+#include "normal/GraphvizWriter.hpp"
 #include "normal/SparseMultiGraph.hpp"
 #include "normal/TracedDFS.hpp"
 #include "normal/UndigraphCC.hpp"
