@@ -39,8 +39,10 @@ int main()
         [&](Edge e) -> std::string {
             std::ostringstream os;
             os << "[label=\"" 
-               << dfs.getEdgeType(e.u, e.v)
-               << "\"]";
+               << dfs.getEdgeType(e.u, e.v) << "\"";
+            if (dfs.getEdgeTypeEnum(e.u, e.v) == DigraphDFS<SparseMultiGraph>::tree)
+                os << ", color = red";
+            os << "]";
             return os.str();
         };
 

@@ -13,6 +13,7 @@
 #include <limits>
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include "TracedDFS.hpp"
 
 namespace mini_graph {
@@ -68,6 +69,45 @@ public:
         post_(graph.vertexCount(), std::numeric_limits<int>::max())
     {}
 
+    enum EdgeType {
+        unknown,
+        tree,
+        down,
+        back,
+        cross
+    };
+
+    EdgeType getEdgeTypeEnum(int u, int v) const
+    {
+        // 树边或前向边
+        // [   [     ]    ]
+        // u   v     v    u
+        if (pre_[u] < pre_[v] && post_[v] < post_[u]) {
+            if (this->parent_[v] == u) {
+                return tree;
+            } else {
+                return down;
+            }
+        }
+
+        // 回边
+        // [   [     ]    ]
+        // v   u     u    v
+        if (pre_[v] < pre_[u] && post_[u] < post_[v]) {
+            return back;
+        }
+
+        // 横跨边
+        // [   ]     [    ]
+        // u   u     v    v
+        // v   v     u    u
+        if (post_[u] < pre_[v] || post_[v] < pre_[u]) {
+            return cross;
+        }
+
+        return unknown;
+    }
+
     /**
      * @brief 获取有向图的深度优先搜索中, 边的类型
      *
@@ -85,33 +125,14 @@ public:
      */
     std::string getEdgeType(int u, int v) const
     {
-        // 树边或前向边
-        // [   [     ]    ]
-        // u   v     v    u
-        if (pre_[u] < pre_[v] && post_[v] < post_[u]) {
-            if (this->parent_[v] == u) {
-                return "tree(树边)";
-            } else {
-                return "down(前向边)";
-            }
-        }
-
-        // 回边
-        // [   [     ]    ]
-        // v   u     u    v
-        if (pre_[v] < pre_[u] && post_[u] < post_[v]) {
-            return "back(回边)";
-        }
-
-        // 横跨边
-        // [   ]     [    ]
-        // u   u     v    v
-        // v   v     u    u
-        if (post_[u] < pre_[v] || post_[v] < pre_[u]) {
-            return "cross(横跨边)";
-        }
-
-        return "impossible(不可能的情况)";
+        static std::unordered_map<int, std::string> edge_type_map = {
+            {unknown, "impossible(不可能的情况)"},
+            {tree, "tree(树边)"}, 
+            {down, "down(前向边)"}, 
+            {back, "back(回边)"},
+            {cross, "cross(横跨边)"}
+        };
+        return edge_type_map[static_cast<int>(getEdgeTypeEnum(u, v))];
     }
 
     /**
