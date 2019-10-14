@@ -1,4 +1,4 @@
-/** \example normal/sample_edges1.cpp
+/** \example normal/sparse_multi_graph/sample_edges2.cpp
  * This is an example of how to use the edges function.
  */
 #include <vector>
@@ -9,10 +9,17 @@ using namespace mini_graph::normal;
 
 int main()
 {
-    int vertexNumber = 8;
-    vector<Edge> edges = {{0,2}, {0,5}, {0,7}, {1,7}, {2,6}, {3,4}, {3,5}, {4,5}, {4,6}, {4,7}}; // graph1.jpg
+    int vertexNumber = 13;
+    vector<Edge> edges = {
+        {4,2}, {2,3}, {3,2}, {0,6}, {0,1},
+        {2,0}, {11,12}, {12,9}, {9,10}, {9,11},
+        {8,9}, {10,12}, {4,11}, {4,3}, {3,5},
+        {7,8}, {8,7}, {5,4}, {0,5}, {6,4},
+        {6,9}, {7,6}};  // digraph1.jpg
 
-    DenseGraph graph(vertexNumber, false);  // directed false
+    SparseMultiGraph graph(vertexNumber, true);  // directed true
+
+    cout << "insert edges\n";
     for (auto edge: edges)
         graph.insert(edge);
 
@@ -25,4 +32,3 @@ int main()
 
     return 0;
 }
-
