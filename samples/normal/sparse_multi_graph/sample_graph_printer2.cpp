@@ -1,5 +1,5 @@
-/** \example normal/sample_graphviz_writer2.cpp
- * This is an example of how to use the GraphvizWriter class.
+/** \example normal/sparse_multi_graph/sample_graph_printer2.cpp
+ * This is an example of how to use the GraphPrinter class.
  */
 #include <vector>
 #include "mini_graph.hpp"
@@ -23,11 +23,15 @@ int main()
     for (auto edge: edges)
         graph.insert(edge);
 
-    // show dot
-    cout << "-----------------show dot of Graph--------------------\n";
-    GraphvizWriter::writeDot(graph);
+    // show adjLists
+    cout << "-----------------show adjLists of Graph--------------------\n";
+    GraphPrinter::showAdjLists(graph);
     cout << endl;
-    GraphvizWriter::writeDotFile("sample_graphviz_writer2.dot", graph);
+
+    // show adjMatrix
+    cout << "-----------------show adjMatrix of Graph--------------------\n";
+    GraphPrinter::showAdjMatrix(graph);
+    cout << endl;
 
     return 0;
 }

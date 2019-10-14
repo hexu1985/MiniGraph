@@ -1,4 +1,4 @@
-/** \example normal/sample_graph_printer2.cpp
+/** \example normal/dense_graph/sample_graph_printer1.cpp
  * This is an example of how to use the GraphPrinter class.
  */
 #include <vector>
@@ -12,7 +12,7 @@ int main()
     int vertexNumber = 8;
     vector<Edge> edges = {{0,2}, {0,5}, {0,7}, {1,7}, {2,6}, {3,4}, {3,5}, {4,5}, {4,6}, {4,7}}; // graph1.jpg
 
-    SparseMultiGraph graph(vertexNumber, false);  // directed false
+    DenseGraph graph(vertexNumber, false);  // directed false
     for (auto edge: edges)
         graph.insert(edge);
 

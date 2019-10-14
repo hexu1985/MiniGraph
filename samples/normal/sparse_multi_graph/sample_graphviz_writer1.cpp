@@ -1,4 +1,4 @@
-/** \example normal/sample_graphviz_writer1.cpp
+/** \example normal/sparse_multi_graph/sample_graphviz_writer1.cpp
  * This is an example of how to use the GraphvizWriter class.
  */
 #include <vector>
@@ -12,7 +12,7 @@ int main()
     int vertexNumber = 8;
     vector<Edge> edges = {{0,2}, {0,5}, {0,7}, {1,7}, {2,6}, {3,4}, {3,5}, {4,5}, {4,6}, {4,7}}; // graph1.jpg
 
-    DenseGraph graph(vertexNumber, false);  // directed false
+    SparseMultiGraph graph(vertexNumber, false);  // directed false
     for (auto edge: edges)
         graph.insert(edge);
 
