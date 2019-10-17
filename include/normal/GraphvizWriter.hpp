@@ -12,33 +12,65 @@ namespace normal {
 
 class GraphvizWriter {
 public:
-    typedef std::function<std::string (int)> GenVertexAttr;
-    typedef std::function<std::string (Edge)> GenEdgeAttr;
+    class Attributes {
+    public:
+        Attributes() {} 
+        virtual ~Attributes() {}
 
-    static const std::string null_string;
-    static const GenVertexAttr null_vertex_attr;
-    static const GenEdgeAttr null_edge_attr;
+        virtual std::string getVertexAttribute(int v) const
+        {
+            return null_string;
+        }
+
+        virtual std::string getEdgeAttribute(Edge e) const
+        {
+            return null_string;
+        }
+
+        virtual std::string getAdditionalAttributes() const
+        {
+            return null_string;
+        }
+
+        static const std::string null_string;
+    };
+
+    struct AttributesForLambda: public Attributes {
+        std::function<std::string (int)> get_vertex_attribute = [](int v) -> std::string { return Attributes::null_string; };
+        std::function<std::string (Edge)> get_edge_attribute = [](Edge e) -> std::string { return Attributes::null_string; };
+        std::function<std::string ()> get_additional_attributes = []() -> std::string { return Attributes::null_string; };
+
+        std::string getVertexAttribute(int v) const override
+        {
+            return get_vertex_attribute(v);
+        }
+
+        std::string getEdgeAttribute(Edge e) const override
+        {
+            return get_edge_attribute(e);
+        }
+
+        std::string getAdditionalAttributes() const override
+        {
+            return get_additional_attributes();
+        }
+    }; 
+
+public:
+    template <class Graph> 
+	static void writeDot(std::ostream &out, const Graph &graph, const Attributes &attributes = Attributes()); 
 
     template <class Graph> 
-	static void writeDot(std::ostream &out, const Graph &graph, 
-            const GenVertexAttr &gen_vertex_attr = null_vertex_attr, const GenEdgeAttr &gen_edge_attr = null_edge_attr);
+	static void writeDot(const Graph &graph, const Attributes &attributes = Attributes()); 
 
     template <class Graph> 
-	static void writeDot(const Graph &graph,
-            const GenVertexAttr &gen_vertex_attr = null_vertex_attr, const GenEdgeAttr &gen_edge_attr = null_edge_attr);
-
-    template <class Graph> 
-	static bool writeDotFile(const std::string &path, const Graph &graph,
-            const GenVertexAttr &gen_vertex_attr = null_vertex_attr, const GenEdgeAttr &gen_edge_attr = null_edge_attr);
+	static bool writeDotFile(const std::string &path, const Graph &graph, const Attributes &attributes = Attributes()); 
 };
 
-const std::string GraphvizWriter::null_string{};
-const GraphvizWriter::GenVertexAttr GraphvizWriter::null_vertex_attr = [](int) -> std::string { return GraphvizWriter::null_string;};
-const GraphvizWriter::GenEdgeAttr GraphvizWriter::null_edge_attr = [](Edge) -> std::string { return GraphvizWriter::null_string;};
+const std::string GraphvizWriter::Attributes::null_string{};
 
 template <class Graph> 
-void GraphvizWriter::writeDot(std::ostream &out, const Graph &graph,
-        const GenVertexAttr &gen_vertex_attr, const GenEdgeAttr &gen_edge_attr)
+void GraphvizWriter::writeDot(std::ostream &out, const Graph &graph, const Attributes &attributes)
 { 
     std::string line;
     if (graph.isDirected()) {
@@ -50,35 +82,35 @@ void GraphvizWriter::writeDot(std::ostream &out, const Graph &graph,
     }
 
     for (int v = 0; v < graph.vertexCount(); v++) {
-        out << "\t" << v << gen_vertex_attr(v) << ";\n";
+        out << "\t" << v << attributes.getVertexAttribute(v) << ";\n";
     }
 
     auto edge_list = edges(graph);
     for (const auto &e: edges(graph)) {
-        out << "\t" << e.u << line << e.v << gen_edge_attr(e) << ";\n";
+        out << "\t" << e.u << line << e.v << attributes.getEdgeAttribute(e) << ";\n";
     }
+
+    out << attributes.getAdditionalAttributes();
 
     out << "}\n";
 }
 
 template <class Graph> 
-bool GraphvizWriter::writeDotFile(const std::string &path, const Graph &graph,
-        const GenVertexAttr &gen_vertex_attr, const GenEdgeAttr &gen_edge_attr)
+bool GraphvizWriter::writeDotFile(const std::string &path, const Graph &graph, const Attributes &attributes)
 {
     std::ofstream ofile(path);
     if (!ofile) {
         return false;
     }
 
-    writeDot(ofile, graph, gen_vertex_attr, gen_edge_attr);
+    writeDot(ofile, graph, attributes);
     return true;
 }
 
 template <class Graph> 
-void GraphvizWriter::writeDot(const Graph &graph,
-        const GenVertexAttr &gen_vertex_attr, const GenEdgeAttr &gen_edge_attr)
+void GraphvizWriter::writeDot(const Graph &graph, const Attributes &attributes)
 { 
-	writeDot(std::cout, graph, gen_vertex_attr, gen_edge_attr);
+	writeDot(std::cout, graph, attributes);
 }
 
 }	// namespace normal

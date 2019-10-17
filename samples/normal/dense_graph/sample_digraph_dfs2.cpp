@@ -26,7 +26,8 @@ int main()
     DigraphDFS<SparseMultiGraph> dfs(graph);
     dfs.search();
 
-    GraphvizWriter::GenVertexAttr gen_vertex_attr =
+    GraphvizWriter::AttributesForLambda attributes;
+    attributes.get_vertex_attribute =
         [&](int v) -> std::string {
             std::ostringstream os;
             os << "[label=\"" << v << "("
@@ -35,7 +36,7 @@ int main()
             return os.str();
         };
 
-    GraphvizWriter::GenEdgeAttr gen_edge_attr =
+    attributes.get_edge_attribute = 
         [&](Edge e) -> std::string {
             std::ostringstream os;
             os << "[label=\"" 
@@ -48,9 +49,9 @@ int main()
 
     // show dot
     cout << "-----------------show dot of Graph--------------------\n";
-    GraphvizWriter::writeDot(graph, gen_vertex_attr, gen_edge_attr);
+    GraphvizWriter::writeDot(graph, attributes);
     cout << endl;
-    GraphvizWriter::writeDotFile("sample_digraph_dfs2.dot", graph, gen_vertex_attr, gen_edge_attr);
+    GraphvizWriter::writeDotFile("sample_digraph_dfs2.dot", graph, attributes);
 
     return 0;
 }
