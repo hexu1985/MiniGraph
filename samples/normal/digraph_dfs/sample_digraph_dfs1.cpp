@@ -1,4 +1,4 @@
-/** \example normal/dense_graph/sample_digraph_dfs1.cpp
+/** \example normal/digraph_dfs/sample_digraph_dfs1.cpp
  * This is an example of how to use the DigraphDFS class.
  */
 #include <iostream>
