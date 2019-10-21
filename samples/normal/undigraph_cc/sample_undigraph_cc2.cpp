@@ -37,14 +37,13 @@ int main()
         [&]() -> std::string {
             std::ostringstream os;
             for (auto &item: cc2v_map) {
-                os << "\n\t"
-                    << "subgraph cluster" << item.first << " {";
+                os << "\t"
+                    << "subgraph cluster" << item.first << " {\n";
                 for (int v: item.second) {
-                    os << "\n\t\t" << v << ";";
+                    os << "\t\t" << v << ";\n";
                 }
-                os << "\n\t}";
+                os << "\t}\n";
             }
-            os << "\n";
             return os.str();
         };
 
