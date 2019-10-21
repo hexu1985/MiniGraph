@@ -1,5 +1,5 @@
-/** \example normal/sample_dfs1.cpp
- * This is an example of how to use the DFS class.
+/** \example normal/dfs/sample_edge_dfs1.cpp
+ * This is an example of how to use the EdgeDFS class.
  */
 #include <iostream>
 #include <vector>
@@ -9,19 +9,19 @@ using namespace std;
 using namespace mini_graph::normal;
 
 template <class Graph>
-class MyDFS: public DFS<Graph> {
+class MyEdgeDFS: public EdgeDFS<Graph> {
 public:
-    MyDFS(const Graph &graph): DFS<Graph>(graph) {}
+    MyEdgeDFS(const Graph &graph): EdgeDFS<Graph>(graph) {}
 
 private:
-    void previsit(int v) override
+    void previsit(Edge e) override
     {
-        cout << "entry " << v << endl;
+        cout << "entry " << e.v << endl;
     }
 
-    void postvisit(int v) override
+    void postvisit(Edge e) override
     {
-        cout << "leave " << v << endl;
+        cout << "leave " << e.v << endl;
     }
 };
 
@@ -34,7 +34,7 @@ int main()
     for (auto edge: edges)
         graph.insert(edge);
 
-    MyDFS<DenseGraph> dfs(graph);
+    MyEdgeDFS<DenseGraph> dfs(graph);
     dfs.search();    // output对应:graph1-dfs-a.jpg, graph1-dfs-b.jpg
 
     return 0;

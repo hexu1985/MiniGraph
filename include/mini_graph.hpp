@@ -5,6 +5,7 @@
 #include "normal/DigraphDFS.hpp"
 #include "normal/DigraphTS.hpp"
 #include "normal/Edge.hpp"
+#include "normal/EdgeDFS.hpp"
 #include "normal/edges.hpp"
 #include "normal/GraphPrinter.hpp"
 #include "normal/GraphvizWriter.hpp"
