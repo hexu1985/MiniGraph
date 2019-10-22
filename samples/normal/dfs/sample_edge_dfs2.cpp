@@ -26,12 +26,16 @@ private:
 
     void previsit(Edge e) override
     {
+        if (e.u == e.v)
+            return;
         count++;
         os << "\t" << e.u << "->" << e.v << "[label=\"(" << count << ")\", color=red];\n";
     }
 
     void postvisit(Edge e) override
     {
+        if (e.u == e.v)
+            return;
         count++;
         os << "\t" << e.u << "->" << e.v << "[label=\"(" << count << ")\", color=blue, style=dashed, dir=back];\n";
     }
@@ -51,6 +55,18 @@ int main()
     dfs.search();    // output对应:graph1-dfs-a.jpg, graph1-dfs-b.jpg
 
     GraphvizWriter::AttributesForLambda attributes;
+    attributes.get_graph_symbol = 
+        [](bool) -> std::string {
+            return "digraph G";
+        };
+    attributes.get_line_symbol = 
+        [](bool) -> std::string {
+            return "->";
+        };
+    attributes.get_edge_attribute = 
+        [](Edge) -> std::string {
+            return "[dir=none]";
+        };
     attributes.get_additional_attributes = 
         [&]() -> std::string {
             return dfs.trace_str();
