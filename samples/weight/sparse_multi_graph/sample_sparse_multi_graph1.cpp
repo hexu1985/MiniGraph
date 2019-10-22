@@ -1,4 +1,4 @@
-/** \example weight/sample_sparse_multi_graph1.cpp
+/** \example weight/sparse_multi_graph/sample_sparse_multi_graph1.cpp
  * This is an example of how to use the SparseMultiGraph class.
  */
 #include <vector>
