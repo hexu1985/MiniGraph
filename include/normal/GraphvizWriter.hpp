@@ -17,28 +17,83 @@ public:
         Attributes() {} 
         virtual ~Attributes() {}
 
-        virtual std::string getVertexAttribute(int v) const
+        static std::string defaultGraphSymbol(bool is_directed)
+        {
+            if (is_directed) {
+                return "digraph G";
+            } else {
+                return "graph G";
+            }
+        }
+
+        static std::string defaultLineSymbol(bool is_directed)
+        {
+            if (is_directed) {
+                return "->";
+            } else {
+                return "--";
+            }
+        }
+
+        static std::string defaultVertexAttribute(int v)
         {
             return null_string;
+        }
+
+        static std::string defaultEdgeAttribute(Edge e)
+        {
+            return null_string;
+        }
+
+        static std::string defaultAdditionalAttributes()
+        {
+            return null_string;
+        }
+
+        virtual std::string getGraphSymbol(bool is_directed) const
+        {
+            return defaultGraphSymbol(is_directed);
+        }
+
+        virtual std::string getLineSymbol(bool is_directed) const
+        {
+            return defaultLineSymbol(is_directed);
+        }
+
+        virtual std::string getVertexAttribute(int v) const
+        {
+            return defaultVertexAttribute(v);
         }
 
         virtual std::string getEdgeAttribute(Edge e) const
         {
-            return null_string;
+            return defaultEdgeAttribute(e);
         }
 
         virtual std::string getAdditionalAttributes() const
         {
-            return null_string;
+            return defaultAdditionalAttributes();
         }
 
         static const std::string null_string;
     };
 
     struct AttributesForLambda: public Attributes {
-        std::function<std::string (int)> get_vertex_attribute = [](int v) -> std::string { return Attributes::null_string; };
-        std::function<std::string (Edge)> get_edge_attribute = [](Edge e) -> std::string { return Attributes::null_string; };
-        std::function<std::string ()> get_additional_attributes = []() -> std::string { return Attributes::null_string; };
+        std::function<std::string (bool)> get_graph_symbol = [](bool is_directed) -> std::string { return defaultGraphSymbol(is_directed); };
+        std::function<std::string (bool)> get_line_symbol = [](bool is_directed) -> std::string { return defaultLineSymbol(is_directed); };
+        std::function<std::string (int)> get_vertex_attribute = [](int v) -> std::string { return defaultVertexAttribute(v); };
+        std::function<std::string (Edge)> get_edge_attribute = [](Edge e) -> std::string { return defaultEdgeAttribute(e); };
+        std::function<std::string ()> get_additional_attributes = []() -> std::string { return defaultAdditionalAttributes(); };
+
+        std::string getGraphSymbol(bool is_directed) const override
+        {
+            return get_graph_symbol(is_directed);
+        }
+
+        std::string getLineSymbol(bool is_directed) const override
+        {
+            return get_line_symbol(is_directed);
+        }
 
         std::string getVertexAttribute(int v) const override
         {
@@ -72,14 +127,9 @@ const std::string GraphvizWriter::Attributes::null_string{};
 template <class Graph> 
 void GraphvizWriter::writeDot(std::ostream &out, const Graph &graph, const Attributes &attributes)
 { 
-    std::string line;
-    if (graph.isDirected()) {
-        out << "digraph G {\n";
-        line = "->";
-    } else {
-        out << "graph G {\n";
-        line = "--";
-    }
+    bool is_directed = graph.isDirected();
+    std::string line = attributes.getLineSymbol(is_directed);
+    out << attributes.getGraphSymbol(is_directed) << " {\n";
 
     for (int v = 0; v < graph.vertexCount(); v++) {
         out << "\t" << v << attributes.getVertexAttribute(v) << ";\n";
