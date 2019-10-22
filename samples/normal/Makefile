@@ -1,19 +1,29 @@
 
-RM = rm -f
-CXX = g++
-CXXFLAGS = -Wall -g -std=c++11
-INCLUDES = -I../../include
-LDFLAGS =
-LDPATH =
+#SUBDIRS = bulk_memory_pool \
+#			heap_functions \
+#			heap_sort \
+#			mt_queue \
+#			priority_queue \
+#			priority_queue_ref \
+#			spin_lock \
+#			stopwatch \
+#			task_queue \
+#			worker_thread
 
-SOURCES = $(shell ls *.cpp)
-PROGS = $(SOURCES:%.cpp=%)
+# 在shell中执行: find . -name "Makefile" | awk '{print substr($0, 3, length($0)-2-length("Makefile"))}' | grep -v '^$'
+# 找到所有包含Makefile的路径
+# 由于$在Makefile里有特殊含义, 所以必须用$$转义.
+SUBDIRS = $(shell find . -name 'Makefile' | awk '{print substr($$0, 3, length($$0)-2-length("Makefile"))}' | grep -v '^$$')
 
-all: $(PROGS)
-	@echo "PROGS = $(PROGS)" 
+all:
+	@echo $(SUBDIRS)
+	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
 
 clean:
-	$(RM) $(PROGS)
+	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
 
-%: %.cpp
-	$(CXX) -o $@ $(CXXFLAGS) $(INCLUDES) $^ $(LDFLAGS) $(LDPATH)
+common:
+	@for dir in $(SUBDIRS); do \
+		echo "Making $(WHAT_TO_MAKE) in $$dir..."; \
+		(cd $$dir && $(MAKE) $(MFLAGS) $(WHAT_TO_MAKE)) || exit 1; \
+	done

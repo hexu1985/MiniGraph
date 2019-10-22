@@ -1,4 +1,4 @@
-/** \example normal/sample_digraph_ts2.cpp
+/** \example normal/digraph_ts/sample_digraph_ts1.cpp
  * This is an example of how to use the DigraphTS class.
  */
 #include <vector>
@@ -17,7 +17,7 @@ int main()
         {9,12}, {11,12}
     };  // digraph2.jpg
 
-    SparseMultiGraph graph(vertexNumber, true);  // directed true
+    DenseGraph graph(vertexNumber, true);  // directed true
 
     cout << "insert edges\n";
     for (auto edge: edges)
@@ -31,7 +31,7 @@ int main()
     GraphPrinter::showAdjLists(graph);
     cout << endl;
 
-    DigraphTS<SparseMultiGraph> ts(graph);
+    DigraphTS<DenseGraph> ts(graph);
     auto tsI = ts.sort();    // 结果可以参考digraph2-topological-order.jpg
 
     cout << "Topological Order of Graph:\n";
