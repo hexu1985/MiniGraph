@@ -1,5 +1,5 @@
-/** \example weight/sample_dijkstra_spt2.cpp
- * This is an example of how to use the DijkstraSPT2 class.
+/** \example weight/sample_dijkstra_spt3.cpp
+ * This is an example of how to use the DijkstraSPT class.
  */
 #include <vector>
 #include "mini_graph.hpp"
@@ -9,28 +9,29 @@ using namespace mini_graph::weight;
 
 int main()
 {
-    int vertexNumber = 6;
+    int vertexNumber = 8;
     vector<Edge> edges = {
-        {0,1, .41},
-        {1,2, .51},
-        {2,3, .50},
-        {4,3, .36},
-        {3,5, .38},
-        {3,0, .45},
-        {0,5, .29},
-        {5,4, .21},
-        {1,4, .32},
-        {4,2, .32},
-        {5,1, .29}
-    }; // digraph1.jpg
+        {0,6, .51}, 
+        {0,1, .32}, 
+        {0,2, .29}, 
+        {4,3, .34}, 
+        {5,3, .18}, 
+        {7,4, .46},
+        {5,4, .40}, 
+        {0,5, .60}, 
+        {6,4, .51}, 
+        {7,0, .31}, 
+        {7,6, .25},
+        {7,1, .21} 
+    }; // graph1.jpg
 
-    SparseMultiGraph graph(vertexNumber, true);  // directed true
+    SparseMultiGraph graph(vertexNumber, false);  // directed false
 
     for (auto &edge: edges)
         graph.insert(&edge);
 
-    DijkstraSPT2<SparseMultiGraph> spt(graph, 0);
-    for (int i = 0; i < graph.vertexCount(); i++) {	// output对应:digraph1-spt-a.jpg, digraph1-spt-b.jpg
+    DijkstraSPT<SparseMultiGraph> spt(graph, 0);
+    for (int i = 0; i < graph.vertexCount(); i++) {
         cout << i << ", dist: " << spt.dist(i) << ", path: "; 
         for (auto v: spt.path(i))
             cout << v << "->"; 

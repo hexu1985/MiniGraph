@@ -13,56 +13,49 @@ template <class Graph>
 class DijkstraSPT { 
 private:
     const Graph &graph_;
-    std::vector<double> dist_;
-    std::vector<Edge *> tree_;
-	int s_;
+    std::vector<double> dist_;  // 原点s到各个顶点的距离
+    std::vector<int> prev_;
 
 public:
     DijkstraSPT(const Graph &graph, int s): 
         graph_(graph), 
         dist_(graph.vertexCount(), Edge::infinity()),
-        tree_(graph.vertexCount(), nullptr),
-		s_(s)
+        prev_(graph.vertexCount(), -1)
     {
         PriorityQueueRef<double> pQ(dist_);
         for (int v = 0; v < graph_.vertexCount(); v++) 
             pQ.insert(v);
 
         dist_[s] = 0.0; 
+        prev_[s] = s;
         pQ.decreaseKey(s);  
 
         while (!pQ.isEmpty()) 
         { 
             int v = pQ.deleteMin();
-            if (v != s && tree_[v] == nullptr) 
-                return;  
-
             for (auto e: graph_.getAdjIterator(v)) { 
                 int w = e->other(v); 
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
                     dist_[w] = dist_[v] + e->weight(); 
                     pQ.decreaseKey(w); 
-                    tree_[w] = e; 
+                    prev_[w] = v; 
                 }
             }
         }
     }
 
-    Edge *tree(int v) const { return tree_[v]; }
+    int prev(int v) const { return prev_[v]; }
     double dist(int v) const { return dist_[v]; }
 
     std::vector<int> path(int v) const 
     {
-		if (v == s_)
-			return std::vector<int>();
-
         std::vector<int> p;
-        Edge *edge = tree(v);
-        p.push_back(edge->other(v));
+        int u = prev(v);
 
-        while ((v = edge->other(v)) != s_) {
-            edge = tree(v);
-            p.push_back(edge->other(v)); 
+        while (u != v) {
+            p.push_back(u);
+            v = u;
+            u = prev(v);
         }
 
         std::reverse(p.begin(), p.end());
