@@ -25,20 +25,20 @@ private:
 
     void pfs(int s)
     {
-        PriorityQueueRef<double> pQ(cost_);
-        pQ.insert(s);
+        mini_utils::PriorityQueueRef<double, std::greater<double>> pQ(cost_);   // 权重越小优先级越高
+        pQ.push(s);
         while (!pQ.isEmpty()) {
-            int v = pQ.deleteMin();
+            int v = pQ.pop();   // 获取权重最小的顶点
             tree_[v] = from_[v];
             for (auto e: graph_.getAdjIterator(v)) {
                 int w = e->other(v);
                 if (from_[w] == nullptr) {
                     cost_[w] = e->weight();
-                    pQ.insert(w);
+                    pQ.push(w);
                     from_[w] = e;
                 } else if (tree_[w] == nullptr && e->weight() < cost_[w]) {
                     cost_[w] = e->weight();
-                    pQ.decreaseKey(w);
+                    pQ.update(w);
                     from_[w] = e;
                 }
             }

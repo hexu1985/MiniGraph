@@ -13,7 +13,7 @@ template <class Graph>
 class DijkstraSPT { 
 private:
     const Graph &graph_;
-    std::vector<double> dist_;  // 原点s到各个顶点的距离
+    std::vector<double> dist_;  // 源点s到各个顶点的距离
     std::vector<int> prev_;
 
 public:
@@ -22,22 +22,25 @@ public:
         dist_(graph.vertexCount(), Edge::infinity()),
         prev_(graph.vertexCount(), -1)
     {
-        PriorityQueueRef<double> pQ(dist_);
+        mini_utils::PriorityQueueRef<double, std::greater<double>> pQ(dist_);   // 距离越小优先级越高
         for (int v = 0; v < graph_.vertexCount(); v++) 
-            pQ.insert(v);
+            pQ.push(v);
 
         dist_[s] = 0.0; 
         prev_[s] = s;
-        pQ.decreaseKey(s);  
+        pQ.update(s);  
 
         while (!pQ.isEmpty()) 
         { 
-            int v = pQ.deleteMin();
+            int v = pQ.pop();   // 获取最小距离的顶点索引
+            if (dist_[v] == Edge::infinity())   // 不可达顶点
+                return;
+
             for (auto e: graph_.getAdjIterator(v)) { 
                 int w = e->other(v); 
                 if ((dist_[v] + e->weight()) < dist_[w]) { 
                     dist_[w] = dist_[v] + e->weight(); 
-                    pQ.decreaseKey(w); 
+                    pQ.update(w);   // 更新到各个顶点的距离
                     prev_[w] = v; 
                 }
             }
@@ -49,9 +52,11 @@ public:
 
     std::vector<int> path(int v) const 
     {
-        std::vector<int> p;
-        int u = prev(v);
+        if (dist_[v] == Edge::infinity())    // 顶点不可达
+            return std::vector<int>();
 
+        int u = prev(v);
+        std::vector<int> p;
         while (u != v) {
             p.push_back(u);
             v = u;
