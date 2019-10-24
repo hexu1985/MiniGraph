@@ -22,7 +22,7 @@ public:
         dist_(graph.vertexCount(), Edge::infinity()),
         tree_(graph.vertexCount(), nullptr)
     {
-        mini_utils::PriorityQueueRef<double, std::greater<double>> pQ(dist_);   // 距离越小优先级越高
+        PriorityQueueRef<double, std::greater<double>> pQ(dist_);   // 距离越小优先级越高
         for (int v = 0; v < graph_.vertexCount(); v++) 
             pQ.push(v);
 

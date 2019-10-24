@@ -25,7 +25,7 @@ private:
 
     void pfs(int s)
     {
-        mini_utils::PriorityQueueRef<double, std::greater<double>> pQ(cost_);   // 权重越小优先级越高
+        PriorityQueueRef<double, std::greater<double>> pQ(cost_);   // 权重越小优先级越高
         pQ.push(s);
         while (!pQ.isEmpty()) {
             int v = pQ.pop();   // 获取权重最小的顶点

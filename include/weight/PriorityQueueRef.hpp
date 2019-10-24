@@ -7,18 +7,17 @@
  *
  * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
  *      Chapter 20.6, class PQi
- * 
  *
  */
-#ifndef MINI_UTILS_PRIORITY_QUEUE_REF_INC
-#define MINI_UTILS_PRIORITY_QUEUE_REF_INC
+#ifndef MINI_GRAPH_PRIORITY_QUEUE_REF_INC
+#define MINI_GRAPH_PRIORITY_QUEUE_REF_INC
 
 #include <vector>
 #include <unordered_map>
 #include <functional>
 #include <cassert>
 
-namespace mini_utils {
+namespace mini_graph {
 
 /**
  * @brief 维护一个包含数据类型T元素的优先级队列,
@@ -168,6 +167,6 @@ public:
     }
 };
 
-}	// namespace mini_utils
+}	// namespace mini_graph
 
 #endif
