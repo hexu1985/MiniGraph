@@ -47,6 +47,8 @@ public:
     }
 
     Edge *tree(int v) const { return tree_[v]; }
+    const std::vector<Edge *> &tree() const { return tree_; }
+
     double dist(int v) const { return dist_[v]; }
 
     std::vector<int> path(int v) const 
