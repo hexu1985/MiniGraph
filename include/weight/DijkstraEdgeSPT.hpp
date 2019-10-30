@@ -1,3 +1,12 @@
+/**
+ * @file DijkstraEdgeSPT.hpp
+ * @brief Dijkstra单源最短路径算法
+ * @author hexu_1985@sina.com
+ * @version 1.0
+ * @date 2019-10-28
+ *
+ * @see C++算法: 图算法(第3版): 章节5.2
+ */
 #ifndef MINI_GRAPH_WEIGHT_DIJKSTRA_EDGE_SPT_INC
 #define MINI_GRAPH_WEIGHT_DIJKSTRA_EDGE_SPT_INC
 

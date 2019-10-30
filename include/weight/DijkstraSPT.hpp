@@ -1,3 +1,12 @@
+/**
+ * @file DijkstraSPT.hpp
+ * @brief Dijkstra单源最短路径算法
+ * @author hexu_1985@sina.com
+ * @version 1.0
+ * @date 2019-10-28
+ *
+ * @see 算法概论中文版: 章节4.4
+ */
 #ifndef MINI_GRAPH_WEIGHT_DIJKSTRA_SPT_INC
 #define MINI_GRAPH_WEIGHT_DIJKSTRA_SPT_INC
 

@@ -5,8 +5,7 @@
  * @version 1.0
  * @date 2019-06-24
  *
- * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
- *      Chapter 17.4
+ * @see C++算法: 图算法(第3版): 章节1.4
  */
 #ifndef MINI_GRAPH_NORMAL_SPARSE_MUTLI_GRAPH_INC
 #define MINI_GRAPH_NORMAL_SPARSE_MUTLI_GRAPH_INC

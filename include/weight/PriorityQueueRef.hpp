@@ -5,8 +5,7 @@
  * @version 1.0
  * @date 2019-07-09
  *
- * @see Algorithms in C++, Third Edition, Part 5 Graph Algorithms:
- *      Chapter 20.6, class PQi
+ * @see C++算法: 图算法(第3版): 章节4.6
  *
  */
 #ifndef MINI_GRAPH_PRIORITY_QUEUE_REF_INC
