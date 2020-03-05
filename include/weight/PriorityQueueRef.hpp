@@ -67,7 +67,7 @@ private:
     }
 
     // 向叶子结点方向调整堆
-    void siftDown(int currentPos, int lastPos)
+    void shiftDown(int currentPos, int lastPos)
     { 
         int childPos = 2*currentPos+1;
         while (childPos < lastPos) {
@@ -134,7 +134,7 @@ public:
         int idxOfKeyList = pqList_[0];
         int lastPos = pqList_.size()-1;
         exch(0, lastPos);
-        siftDown(0, lastPos);
+        shiftDown(0, lastPos);
 
         // pop last element of pqList 
         pqList_.pop_back();
@@ -162,7 +162,7 @@ public:
     {
         assert(key2pqMap_.count(idxOfKeyList) && key2pqMap_[idxOfKeyList] < (int) pqList_.size());
         bubbleUp(key2pqMap_[idxOfKeyList]);
-        siftDown(key2pqMap_[idxOfKeyList], pqList_.size());
+        shiftDown(key2pqMap_[idxOfKeyList], pqList_.size());
     }
 };
 
